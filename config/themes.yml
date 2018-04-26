@@ -1,2 +1,2 @@
-default: styles/application.scss
+default: styles/customize.scss
 contrast: styles/contrast.scss
