@@ -20,6 +20,7 @@
 #  language               :string
 #  conversation_id        :integer
 #  local                  :boolean
+#  enquete                :json
 #  account_id             :integer          not null
 #  application_id         :integer
 #  in_reply_to_account_id :integer

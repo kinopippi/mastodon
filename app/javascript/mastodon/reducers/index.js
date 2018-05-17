@@ -25,6 +25,7 @@ import height_cache from './height_cache';
 import custom_emojis from './custom_emojis';
 import lists from './lists';
 import listEditor from './list_editor';
+import enquetes from './enquetes';
 
 const reducers = {
   dropdown_menu,
@@ -53,6 +54,7 @@ const reducers = {
   custom_emojis,
   lists,
   listEditor,
+  enquetes,
 };
 
 export default combineReducers(reducers);

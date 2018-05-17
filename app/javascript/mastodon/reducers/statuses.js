@@ -38,6 +38,10 @@ import {
 } from '../actions/pin_statuses';
 import { SEARCH_FETCH_SUCCESS } from '../actions/search';
 import emojify from '../features/emoji/emoji';
+import {
+  VOTE_SUCCESS,
+  SET_ENQUETE_TIMEOUT,
+} from '../actions/enquetes';
 import { Map as ImmutableMap, fromJS } from 'immutable';
 import escapeTextContentForBrowser from 'escape-html';
 
@@ -138,6 +142,13 @@ export default function statuses(state = initialState, action) {
     return normalizeStatuses(state, action.statuses);
   case TIMELINE_DELETE:
     return deleteStatus(state, action.id, action.references);
+  case VOTE_SUCCESS:
+    return state
+      .setIn([action.status_id, 'vote'], true)
+      .setIn([action.status_id, 'voted_num'], action.item_index);
+  case SET_ENQUETE_TIMEOUT:
+    return state
+      .setIn([action.status_id, 'enquete_timeout'], true);
   default:
     return state;
   }

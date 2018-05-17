@@ -278,5 +278,16 @@
   "video.mute": "Mute sound",
   "video.pause": "Pause",
   "video.play": "Play",
-  "video.unmute": "Unmute sound"
+  "video.unmute": "Unmute sound",
+  "enquete_button.label": "Create enquete",
+  "enquete_input.item_1": "Item1",
+  "enquete_input.item_2": "Item2",
+  "enquete_input.item_3": "Item3(Option)",
+  "enquete_input.item_4": "Item4(Option)",
+  "enquete.expired": "Expired",
+  "enquete.duration_sec": "{number}s",
+  "enquete.duration_min": "{number}m",
+  "enquete.duration_hour": "{number}h",
+  "enquete.duration_day": "{number}d",
+  "enquete.about_text": "About {rate}%"
 }

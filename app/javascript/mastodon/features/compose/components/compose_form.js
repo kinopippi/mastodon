@@ -19,6 +19,9 @@ import ImmutablePureComponent from 'react-immutable-pure-component';
 import { length } from 'stringz';
 import { countableText } from '../util/counter';
 
+import EnqueteButtonContainer from '../../enquete/containers/enquete_button_container';
+import EnqueteInputsContainer from '../../enquete/containers/enquete_inputs_container';
+
 const messages = defineMessages({
   placeholder: { id: 'compose_form.placeholder', defaultMessage: 'What is on your mind?' },
   spoiler_placeholder: { id: 'compose_form.spoiler_placeholder', defaultMessage: 'Write your warning here' },
@@ -51,6 +54,7 @@ export default class ComposeForm extends ImmutablePureComponent {
     onPickEmoji: PropTypes.func.isRequired,
     showSearch: PropTypes.bool,
     anyMedia: PropTypes.bool,
+    enquete: ImmutablePropTypes.map.isRequired,
   };
 
   static defaultProps = {
@@ -145,7 +149,9 @@ export default class ComposeForm extends ImmutablePureComponent {
   render () {
     const { intl, onPaste, showSearch, anyMedia } = this.props;
     const disabled = this.props.is_submitting;
-    const text     = [this.props.spoiler_text, countableText(this.props.text)].join('');
+    const enquete_items = this.props.enquete.get('items').toArray().join('');
+    const text     = [this.props.spoiler_text, countableText(this.props.text)].join('') +
+      (this.props.enquete.get('active') ? enquete_items + 'a'.repeat(150) : '');
     const disabledButton = disabled || this.props.is_uploading || length(text) > 500 || (text.length !== 0 && text.trim().length === 0 && !anyMedia);
     let publishText = '';
 
@@ -193,12 +199,15 @@ export default class ComposeForm extends ImmutablePureComponent {
           <UploadFormContainer />
         </div>
 
+        <EnqueteInputsContainer />
+
         <div className='compose-form__buttons-wrapper'>
           <div className='compose-form__buttons'>
             <UploadButtonContainer />
             <PrivacyDropdownContainer />
             <SensitiveButtonContainer />
             <SpoilerButtonContainer />
+            <EnqueteButtonContainer />
           </div>
           <div className='character-counter__wrapper'><CharacterCounter max={500} text={text} /></div>
         </div>

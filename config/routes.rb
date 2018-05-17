@@ -292,6 +292,8 @@ Rails.application.routes.draw do
         end
       end
 
+      post '/votes/:status_id', to: 'votes#create'
+
       resources :lists, only: [:index, :create, :show, :update, :destroy] do
         resource :accounts, only: [:show, :create, :destroy], controller: 'lists/accounts'
       end
