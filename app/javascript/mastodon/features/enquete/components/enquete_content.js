@@ -189,7 +189,7 @@ export default class EnqueteContent extends React.PureComponent {
           </div>
         </div>
         <div className='enquete-time'>
-          {status.get('enquete_timeout') ? '終了' : remaining}
+          {status.get('enquete_timeout') ? <FormattedMessage id='enquete.expired' defaultMessage='Expired' /> : remaining}
         </div>
       </div>
     );
