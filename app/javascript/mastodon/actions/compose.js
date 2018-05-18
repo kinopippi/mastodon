@@ -105,7 +105,7 @@ export function submitCompose() {
     const enquete_duration = getState().getIn(['enquetes', 'duration']);
     const enquete_items = getState().getIn(['enquetes', 'items']).toArray();
 
-    if ((!status || !status.length) && media.size === 0 || (isEnquete && (enquete_items.filter(item => item !== '').length < 2))) {
+    if (((!status || !status.length) && media.size === 0) || (isEnquete && (enquete_items.filter(item => item !== '').length < 2))) {
       return;
     }
 
