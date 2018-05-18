@@ -149,9 +149,13 @@ export default class ComposeForm extends ImmutablePureComponent {
   render () {
     const { intl, onPaste, showSearch, anyMedia } = this.props;
     const disabled = this.props.is_submitting;
-    const enquete_items = this.props.enquete.get('items').toArray().join('');
-    const text     = [this.props.spoiler_text, countableText(this.props.text)].join('') +
-      (this.props.enquete.get('active') ? enquete_items + 'a'.repeat(150) : '');
+
+    let text = [this.props.spoiler_text, countableText(this.props.text)].join('');
+    try {
+      const enquete_items = this.props.enquete.get('items').toArray().join('');
+      text += (this.props.enquete.get('active') ? enquete_items + 'a'.repeat(150) : '');
+    } catch (e) {}
+
     const disabledButton = disabled || this.props.is_uploading || length(text) > 500 || (text.length !== 0 && text.trim().length === 0 && !anyMedia);
     let publishText = '';
 
