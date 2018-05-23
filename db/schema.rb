@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180517000000) do
+ActiveRecord::Schema.define(version: 20180304013859) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -428,7 +428,6 @@ ActiveRecord::Schema.define(version: 20180517000000) do
     t.string "language"
     t.bigint "conversation_id"
     t.boolean "local"
-    t.json "enquete"
     t.bigint "account_id", null: false
     t.bigint "application_id"
     t.bigint "in_reply_to_account_id"
