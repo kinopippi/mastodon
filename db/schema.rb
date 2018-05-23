@@ -428,6 +428,7 @@ ActiveRecord::Schema.define(version: 20180304013859) do
     t.string "language"
     t.bigint "conversation_id"
     t.boolean "local"
+    t.json "enquete"
     t.bigint "account_id", null: false
     t.bigint "application_id"
     t.bigint "in_reply_to_account_id"
